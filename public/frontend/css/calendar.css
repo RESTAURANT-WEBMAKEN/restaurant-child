@@ -1,0 +1,147 @@
+#calendar-controls {
+    text-align: center;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#calendar-controls button {
+    font-size: 25px;
+    padding: 0px 12px;
+    border-radius: 5px;
+    border: 1px solid lightgray;
+    background-color: transparent;
+    color: white;
+    font-weight: bold;
+
+    &:hover {
+        background-color: rgba(248, 243, 243, 0.129);
+    }
+}
+
+#current-month-year {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#calendar {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+th,
+td {
+    text-align: center;
+    position: relative;
+    color: white;
+    font-size: inherit;
+    font-weight: 600;
+    padding: 4px;
+    height: 50px;
+    width: 50px;
+
+    div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        height: 100%;
+        width: 100%;
+        border: 1px solid #ffffffa3;
+    }
+}
+
+th {
+    background-color: inherit;
+}
+
+.selected-date {
+    padding: 3px;
+    div {
+        background-color: white;
+        border-radius: 50%;
+        color: var(--bs-blue);
+    }
+}
+
+.disabled {
+    color: #ffa8a8a8;
+    cursor: not-allowed;
+
+    div {
+        border: none;
+    }
+}
+
+.disabled-weekday {
+    color: #ffffff7a;
+    cursor: not-allowed;
+
+    div {
+        border: none;
+    }
+}
+
+.available>div {
+    position: relative;
+    cursor: pointer;
+    color: #fff;
+}
+
+.available>div:hover::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 0.4;
+    }
+
+    50% {
+        opacity: 0.8;
+    }
+
+    100% {
+        opacity: 0.4;
+    }
+}
+
+.tooltip {
+    position: absolute;
+    top: -5px;
+    left: 100%;
+    margin-left: 10px;
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    border-radius: 10px;
+    white-space: nowrap;
+    visibility: hidden;
+    opacity: 1;
+    transition: opacity 0.3s;
+    width: max-content;
+    height: auto;
+}
+
+td:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+}
